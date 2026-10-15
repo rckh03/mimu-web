@@ -1,0 +1,15 @@
+// Panel de administración: crea y gestiona las cuentas de padres y tutores (ellos entran desde la app Android)
+const AI=[['inicio','Inicio'],['tutores','Tutores']];
+const firstDone=x=>!x.requiere_cambio_password&&x.terminos_aceptados;
+function admin(u){const tut=Object.entries(U).filter(([,x])=>x.role==='parent');let b='';
+ if(ui.sec==='inicio'){const pend=tut.filter(([,x])=>!firstDone(x)).length,linked=new Set(tut.flatMap(([,x])=>x.kids)),sin=ALL.filter(k=>!linked.has(k)).length;
+  b=ttl('Bienvenid@, '+esc(u.name),'Resumen de cuentas')+`<div class="stats"><div class="st"><b>${tut.length}</b><span>Cuentas de tutores</span></div><div class="st"><b>${pend}</b><span>Primer acceso pendiente</span></div><div class="st"><b>${sin}</b><span>Estudiantes sin tutor</span></div></div><p><button class="btn" data-a="go" data-v="tutores">Crear cuenta de tutor</button></p>`}
+ if(ui.sec==='tutores'){
+  const rows=tut.map(([em,x])=>`<tr><td class="l">${esc(x.name)}<br><small class="mut">${esc(em)}</small></td><td>${x.kids.map(k=>esc(S[k].n.split(' ')[0])).join(', ')}</td><td><span class="pill ${firstDone(x)?'ok':'no'}">${firstDone(x)?'Completado':'Pendiente'}</span></td><td><button class="act" data-a="tog" data-v="${esc(em)}">${x.active===false?'Activar':'Desactivar'}</button></td></tr>`).join('');
+  const ck=ALL.map(k=>`<label style="font-weight:600;display:flex;gap:8px;align-items:center;margin:4px 0;color:var(--ink);font-size:.85rem"><input type="checkbox" name="ck" value="${k}" style="width:auto"> ${esc(S[k].n)} · Kinder A</label>`).join('');
+  const cred=ui.cred?`<div style="background:var(--sun);border-radius:12px;padding:12px;margin-top:12px;font-size:.85rem"><b>Entrega estas credenciales a ${esc(ui.cred.name)}:</b><br>Correo: ${esc(ui.cred.email)}<br>Contraseña temporal: <b>${esc(ui.cred.pw)}</b><br><span class="mut">En su primer inicio en la app deberá cambiarla y aceptar los Términos y Condiciones. Esta contraseña no se vuelve a mostrar.</span></div>`:'';
+  b=ttl('Tutores','Cuentas de padres y tutores para la app MIMU')+`<div class="two"><div class="box"><h3>Cuentas creadas</h3><div class="tw"><table><tr><th>Tutor</th><th>Estudiantes</th><th>Primer acceso</th><th>Cuenta</th></tr>${rows}</table></div></div>
+<form class="box" id="cf" novalidate><h3>Crear cuenta de tutor</h3><label for="cn">Nombre completo</label><input id="cn" maxlength="60" autocomplete="off"><label for="ce">Correo</label><input id="ce" type="email" autocomplete="off"><label for="cp">Teléfono (opcional)</label><input id="cp" inputmode="tel" placeholder="6XXX-XXXX" autocomplete="off">
+<label for="cw">Contraseña temporal</label><div style="display:flex;gap:8px"><input id="cw" autocomplete="off"><button type="button" class="btn alt" data-a="gen">Generar</button></div><label>Estudiantes asociados</label>${ck}
+<p style="margin:16px 0 0"><button class="btn" type="submit">Crear cuenta</button></p><p id="cfm" class="msg${ui.err?' e':''}" role="alert">${esc(ui.err||ui.msg)}</p>${cred}</form></div>`}
+ return shell(AI,b)}

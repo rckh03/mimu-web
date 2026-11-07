@@ -1,0 +1,4 @@
+/* Paleta, tipografías y modo oscuro (se activa con data-theme="dark") */
+:root{--navy:#132442;--cream:#FFFDF9;--ink:#3A3A3A;--bar:#132442;--peach:#FFD3B8;--salmon:#FFD3B8;--mint:#B8E8D8;--green:#4FBF9B;--or:#FF9B71;--coral:#FF9B71;--beige:#EDE6DD;--lav:#E0D4F7;--sun:#FFF3B0;--red:#FF6B6B;--line:#F3E6DA;--card:#fff;--mut:#7A7F8C;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root[data-theme="dark"]{--cream:#0E1730;--ink:#EDEAE4;--bar:#EDEAE4;--card:#18234A;--line:#2B3862;--beige:#2B3862;--mut:#A9B1D1}

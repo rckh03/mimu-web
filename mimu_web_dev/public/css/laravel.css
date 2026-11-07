@@ -1,0 +1,12 @@
+/* Ajustes para Laravel: aquí navegamos con <a>, el prototipo usaba <button> */
+a.btn, a.act { display: inline-block; text-decoration: none; }
+
+.side nav a {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+    text-align: left;
+    font: 500 1.15rem Fredoka;
+    padding: 10px 4px;
+}
+.side nav a.on { font-weight: 700; }
